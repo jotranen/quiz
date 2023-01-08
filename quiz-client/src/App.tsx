@@ -1,26 +1,48 @@
-import React from "react";
-import logo from "./logo.svg";
+import React, { useState } from "react";
+
 import "./App.css";
 
-function App() {
+import Button from "./components/Button/Button";
+
+const App = (): JSX.Element => {
+  const [clickedButton, setClickedButton] = useState('');
+
+  const buttonHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+
+    const button: HTMLButtonElement = event.currentTarget;
+    setClickedButton(button.name);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <h3>Quiz</h3>
+      <form>
+        <button onClick={buttonHandler} className="button" name="button 1">
+          Button 1
+        </button>
+
+        <Button shape='rounded' children="kala" variant="danger"></Button>
+
+        <button onClick={buttonHandler} className="button" name="button 2">
+          Button 2
+        </button>
+
+        <button onClick={buttonHandler} className="button" name="button 3">
+          Button 3
+        </button>
+
+        <button onClick={buttonHandler} className="button" name="button 4">
+          Button 4
+        </button>
+      </form>
+      <h1>
+        {clickedButton !== ""
+          ? `You have clicked "${clickedButton}"` 
+          : "No button clicked yet"}
+      </h1>
     </div>
   );
-}
+};
 
 export default App;
