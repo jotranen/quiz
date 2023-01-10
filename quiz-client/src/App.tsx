@@ -4,6 +4,34 @@ import "./App.css";
 
 import Button from "./components/Button/Button";
 
+// element
+const element = <h1>Hello, world</h1>;
+
+// component
+function Welcome(props: any) {
+  return <h1>Hello, {props.name}</h1>;
+}
+
+interface Props {
+}
+
+const Clock = (props: Props) => {
+  const [state, setState] = useState({
+    date: new Date(),
+  });
+
+  React.useEffect(() => {
+    setTimeout(() => {
+      setState({
+        date: new Date(),
+      });
+    }, 1000);
+  });
+
+  return <h2>{`${state.date}`}</h2>;
+};
+
+
 const App = (): JSX.Element => {
   const [clickedButton, setClickedButton] = useState('');
 
@@ -17,6 +45,9 @@ const App = (): JSX.Element => {
   return (
     <div className="container">
       <h3>Quiz</h3>
+
+      <Welcome name='Kala'></Welcome>
+      <Clock/>
       <form>
         <button onClick={buttonHandler} className="button" name="button 1">
           Button 1
