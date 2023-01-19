@@ -1,0 +1,60 @@
+{
+	"info": {
+		"_postman_id": "ebc14f34-967a-4117-9c84-35fcf962371e",
+		"name": "party-party",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "281746"
+	},
+	"item": [
+		{
+			"name": "query User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query Query {\n    user(id: \"1\") {\n        id\n    }\n}\n\n# mutation CreateUser {\n#     user {\n#         id: 1\n#     }\n# }",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "localhost:4000/graphql",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "mutation User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation CreateUser {\n  createUser(email: \"kala\", password: \"kissa\", firstName: \"tsepe\", lastName: \"loikkanen\") {\n    id\n    email\n    password\n    loggedIn\n    firstName\n    lastName\n  }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "localhost:4000/graphql",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
