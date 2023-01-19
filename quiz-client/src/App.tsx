@@ -31,7 +31,6 @@ const Clock = (props: Props) => {
   return <h2>{`${state.date}`}</h2>;
 };
 
-
 const App = (): JSX.Element => {
   const [clickedButton, setClickedButton] = useState('');
 
@@ -53,7 +52,7 @@ const App = (): JSX.Element => {
           Button 1
         </button>
 
-        <Button shape='rounded' children="kala" variant="danger"></Button>
+        <Button onClick={buttonHandler} name='kissa' shape='rounded' children="kala" variant="danger"></Button>
 
         <button onClick={buttonHandler} className="button" name="button 2">
           Button 2
