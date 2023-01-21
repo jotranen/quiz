@@ -19,7 +19,7 @@ const server = new ApolloServer({
   ],
 });
 
-const data =  DataProvider.create()
+// const data =  DataProvider.create()
 
 server.listen().then(({ url }) => {
   console.log(`🚀  Server ready at ${url}`);

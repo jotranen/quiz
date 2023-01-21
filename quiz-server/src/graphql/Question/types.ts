@@ -3,5 +3,6 @@ export const types = `
     id: ID
     lang: String
     question: String
+    answers: [String]
   }
 `
