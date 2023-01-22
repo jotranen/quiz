@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import "./App.css";
 
-import Button from "./components/Button/Button";
+import Button from "./components/AnswerButton/AnswerButton";
 
 // element
 const element = <h1>Hello, world</h1>;

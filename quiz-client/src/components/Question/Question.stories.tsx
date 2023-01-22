@@ -1,20 +1,20 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import Tag from './index'
+import Question from './index'
 
 export default {
      title: 'Tag title',
-     component: Tag
+     component: Question
 }
 
 export const Basic = () => (
-     <Tag />
+     <Question />
 )
 
 export const Second = () => (
-     <Tag title="My second tag" />
+     <Question title="My second tag" />
 )
 
-const Template: ComponentStory<typeof Tag> = (args) => <Tag {...args} />;
+const Template: ComponentStory<typeof Question> = (args) => <Question {...args} />;
 export const Primary = Template.bind({});

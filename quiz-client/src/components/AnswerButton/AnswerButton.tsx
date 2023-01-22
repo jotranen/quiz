@@ -1,15 +1,15 @@
 import React from "react";
 
-import './Button.css';
+import './AnswerButton.css';
 
-export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
+export interface AnswerButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   children?: React.ReactNode;
   variant: "primary" | "danger"; 
   shape?: "rounded";
   name: string;
 }
 
-export const Button: React.FC<ButtonProps> = ({
+export const AnswerButton: React.FC<AnswerButtonProps> = ({
     children,
     variant,
     shape,
@@ -23,4 +23,4 @@ export const Button: React.FC<ButtonProps> = ({
     );
   };
 
-export default Button;
+export default AnswerButton;

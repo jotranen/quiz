@@ -1,12 +1,12 @@
 import React from 'react'
 
-interface TagProps {
+interface QuestionProps {
      title?: string;
 }
 
-export const Tag = ({
+export const Question = ({
     title
-}: TagProps) => {
+}: QuestionProps) => {
     return (
         <div style={{backgroundColor: 'yellow'}}>
             {title}
@@ -14,6 +14,6 @@ export const Tag = ({
     )
 
 }
-export default Tag;
+export default Question;
 
   
