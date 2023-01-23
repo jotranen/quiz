@@ -7,6 +7,7 @@ import Question from '../Question';
 export interface QuestionCardProps extends React.HTMLAttributes<HTMLElement> {
     children?: React.ReactNode;
     question: string
+    answers: string[]
 }
   
   export const QuestionCard: React.FC<QuestionCardProps> = ({
@@ -21,7 +22,11 @@ export interface QuestionCardProps extends React.HTMLAttributes<HTMLElement> {
             <Question title={props.question}></Question>
           </div>
           <div className={classNames} {...props}>
-            <AnswerButton variant={'danger'} name={''}></AnswerButton>
+              { props.answers.map(answer => (
+                <div>
+                <AnswerButton variant={'danger'} name={''}>{answer}</AnswerButton>
+                </div>
+              ))}
           </div>          
         </div>
       );

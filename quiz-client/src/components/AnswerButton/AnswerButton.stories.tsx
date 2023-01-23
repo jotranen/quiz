@@ -3,7 +3,7 @@ import { Meta, Story } from "@storybook/react";
 import { AnswerButton, AnswerButtonProps } from "./AnswerButton";
 
 export default {
-  title: "Button",
+  title: "AnswerButton",
   component: AnswerButton,
 } as Meta;
 

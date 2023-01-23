@@ -16,4 +16,5 @@ Primary.args = {
   children: "Primary",
   title: "primary",
   question: "mita kello?",
+  answers: ["kello", "kello2", "kello3"]
 };
