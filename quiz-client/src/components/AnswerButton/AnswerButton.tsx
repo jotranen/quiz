@@ -15,11 +15,13 @@ export const AnswerButton: React.FC<AnswerButtonProps> = ({
     shape,
     ...props
   }) => {
-    const classNames = `btn btn-${variant} btn-${shape}`;
+    const classNames = `btn select`;
     return (
+      <div className="answerbutton-center">
       <button className={classNames} {...props}>
         {children}
       </button>
+      </div>
     );
   };
 

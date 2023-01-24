@@ -18,16 +18,14 @@ export interface QuestionCardProps extends React.HTMLAttributes<HTMLElement> {
       const classNames = `questioncard`;
       return (
         <div className={classNames} {...props}>
-          <div className='element'>
+          <div className='qc_question'>
             <Question title={props.question}></Question>
           </div>
-          <div className='element' {...props}>
-              { props.answers.map(answer => (
-                <div>
-                <AnswerButton variant={'danger'} name={''}>{answer}</AnswerButton>
+            { props.answers.map(answer => (
+                <div className='qc_answers' {...props}>
+                  <AnswerButton variant={'danger'} name={'kissa'}>{answer}</AnswerButton>
                 </div>
-              ))}
-          </div>          
+          ))}
         </div>
       );
     };
