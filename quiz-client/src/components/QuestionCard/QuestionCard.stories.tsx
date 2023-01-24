@@ -15,6 +15,6 @@ export const Primary = Template.bind({});
 Primary.args = {
   children: "Primary",
   title: "primary",
-  question: "mita kello?",
+  question: "mita kello? fdafasdfadf asfasdfas hfsadhfkja sdhfkasdhfkashfkja hfhdahkfdsah",
   answers: ["kello", "kello2", "kello3"]
 };

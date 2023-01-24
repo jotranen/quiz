@@ -1,0 +1,19 @@
+.questioncard {
+    /* width: 750px;
+    height: 1334px; */
+    width: 325px;
+    height: 667px;
+    max-width: 100%;
+    max-height: 100%;
+    background-color: white;
+    border-radius: 20px 20px 20px 20px;
+    overflow: hidden;
+    position: absolute;
+    border: 2px solid black;
+}
+.element {
+    background-color: blue;
+    top: 10px;
+    position: relative;
+}
+

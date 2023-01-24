@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import "./App.css";
 
 import Button from "./components/AnswerButton/AnswerButton";
+import QuestionCard from "./components/QuestionCard";
 
 // element
 const element = <h1>Hello, world</h1>;
@@ -30,6 +31,8 @@ const Clock = (props: Props) => {
 
   return <h2>{`${state.date}`}</h2>;
 };
+const question = "mita kello? fdafasdfadf asfasdfas hfsadhfkja sdhfkasdhfkashfkja hfhdahkfdsah";
+const answers = ["kello", "kello2", "kello3"]
 
 const App = (): JSX.Element => {
   const [clickedButton, setClickedButton] = useState('');
@@ -41,11 +44,14 @@ const App = (): JSX.Element => {
     setClickedButton(button.name);
   };
 
+
   return (
     <div className="container">
-      <h3>Quiz</h3>
+      <div>
+        <QuestionCard question={question} answers={answers}></QuestionCard>
+      </div>
 
-      <Welcome name='Kala'></Welcome>
+      {/* <Welcome name='Kala'></Welcome>
       <Clock/>
       <form>
         <button onClick={buttonHandler} className="button" name="button 1">
@@ -70,7 +76,7 @@ const App = (): JSX.Element => {
         {clickedButton !== ""
           ? `You have clicked "${clickedButton}"` 
           : "No button clicked yet"}
-      </h1>
+      </h1> */}
     </div>
   );
 };

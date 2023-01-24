@@ -2,7 +2,7 @@ import React from 'react'
 import AnswerButton from '../AnswerButton';
 import Question from '../Question';
 
-// import './Button.css';
+import './QuestionCard.css';
 
 export interface QuestionCardProps extends React.HTMLAttributes<HTMLElement> {
     children?: React.ReactNode;
@@ -15,13 +15,13 @@ export interface QuestionCardProps extends React.HTMLAttributes<HTMLElement> {
       ...props
     }) => {
     //   const classNames = `btn btn-${variant} btn-${shape}`;
-      const classNames = `list-item`;
+      const classNames = `questioncard`;
       return (
-        <div>
-          <div>
+        <div className={classNames} {...props}>
+          <div className='element'>
             <Question title={props.question}></Question>
           </div>
-          <div className={classNames} {...props}>
+          <div className='element' {...props}>
               { props.answers.map(answer => (
                 <div>
                 <AnswerButton variant={'danger'} name={''}>{answer}</AnswerButton>
