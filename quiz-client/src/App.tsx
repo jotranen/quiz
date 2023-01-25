@@ -41,6 +41,7 @@ const App = (): JSX.Element => {
     event.preventDefault();
 
     const button: HTMLButtonElement = event.currentTarget;
+    alert('kala');
     setClickedButton(button.name);
   };
 
@@ -48,7 +49,7 @@ const App = (): JSX.Element => {
   return (
     <div className="container">
       <div>
-        <QuestionCard question={question} answers={answers}></QuestionCard>
+        <QuestionCard question={question} answers={answers} buttonHandler={buttonHandler}></QuestionCard>
       </div>
 
       {/* <Welcome name='Kala'></Welcome>

@@ -5,6 +5,7 @@ import { AnswerButton, AnswerButtonProps } from "./AnswerButton";
 export default {
   title: "AnswerButton",
   component: AnswerButton,
+  argTypes: { onClick: { action: 'kala' } },
 } as Meta;
 
 const Template: Story<AnswerButtonProps> = args => <AnswerButton {...args} />;
