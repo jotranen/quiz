@@ -8,13 +8,12 @@
     cursor: pointer;
     margin: 0 auto;
     display: block;
-    margin-top: 2%;
+    margin-top: 5%;
     border-color: 2px solid black;
     border-radius: 20px 20px 20px 20px;
     width: 90%;
 }
 
-/* Green */
 .select {
   border-color: #04AA6D;
   color: green;
@@ -23,22 +22,4 @@
 .select:hover {
   background-color: #04AA6D;
   color: white;
-}
-
-  
-/* styling for our variants */
-.btn-primary {
-  /* border: none; */
-  background-color: blue;
-  color: white;
-}
-.btn-danger {
-  /* border: none; */
-  background-color: red;
-  color: white;
-}
-
-/* styling for different shape*/
-.btn-rounded {
-  /* border-radius: 0.4rem; */
 }
