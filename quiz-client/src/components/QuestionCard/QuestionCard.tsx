@@ -13,18 +13,19 @@ export interface QuestionCardProps extends React.HTMLAttributes<HTMLElement> {
   
   export const QuestionCard: React.FC<QuestionCardProps> = ({
       children,
+      buttonHandler,
       ...props
     }) => {
     //   const classNames = `btn btn-${variant} btn-${shape}`;
       const classNames = `questioncard`;
       return (
         <div className={classNames} {...props}>
-          <div className='qc_question'>
+          <div className='qc_question' key="kissa">
             <Question key="props.question" title={props.question}></Question>
           </div>
-            { props.answers.map(answer => (
-                <div className='qc_answers' {...props}>
-                  {/* <AnswerButton variant={'danger'} key={'answers[1]'} name={'kissa'} buttonHandler={props.buttonHandler}>{answer}</AnswerButton> */}
+            { props.answers.map((answer,index) => (
+                <div className='qc_answers' key={index} {...props}>
+                  <AnswerButton variant={'danger'} key={'answers[1]'} name={'kissa'} buttonhandler={buttonHandler}>{answer}</AnswerButton>
                 </div>
           ))}
         </div>
