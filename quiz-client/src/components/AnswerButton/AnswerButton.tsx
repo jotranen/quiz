@@ -7,7 +7,7 @@ export interface AnswerButtonProps extends React.HTMLAttributes<HTMLButtonElemen
   variant: "primary" | "danger"; 
   shape?: "rounded";
   name: string;
-  key: number;
+  key: string;
   buttonhandler: (event: React.MouseEvent<HTMLButtonElement>) => void
 }
 

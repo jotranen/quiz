@@ -25,7 +25,7 @@ export interface QuestionCardProps extends React.HTMLAttributes<HTMLElement> {
           </div>
             { props.answers.map((answer,index) => (
                 <div className='qc_answers' key={index} {...props}>
-                  <AnswerButton variant={'danger'} key={index} name={`${answer}`} buttonhandler={buttonHandler}>{answer}</AnswerButton>
+                  <AnswerButton variant={'danger'} id={`${index}`} name={`${answer}`} buttonhandler={buttonHandler} key={''}>{answer}</AnswerButton>
                 </div>
           ))}
         </div>

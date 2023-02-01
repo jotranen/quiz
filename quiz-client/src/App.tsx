@@ -51,13 +51,18 @@ class App extends React.Component<Props, any> {
     event.preventDefault();
 
     const button: HTMLButtonElement = event.currentTarget;
-    // alert(button.name);
-    if (button.name === "start") {
-      this.setState({ showStartGame: false, showQuestions: true });
-    } 
 
-    // setClickedButton(button.name);
-  };
+    if (startGame) {
+      if (button.id === "0") {   
+        this.setState({
+          showStartGame: false,
+          showQuestions: true,
+        });     
+      } else {
+        alert("join game");
+      }
+    };
+  }
 
   render() {
     return (
