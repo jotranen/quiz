@@ -48,6 +48,7 @@ class App extends React.Component<Props, any> {
       showQuestionsAnswered: false,
       gameId: string,
       container: React.createRef(),
+      selectedButton: 0,
     };
   }
 
@@ -63,6 +64,7 @@ class App extends React.Component<Props, any> {
           showQuestions: true,
           showQuestionsAnswered: false,
           gameId : "1234",
+          selectedButton: 0,
         });     
       } else {
         alert("join game");
@@ -72,6 +74,7 @@ class App extends React.Component<Props, any> {
         showStartGame: false,
         showQuestions: false,
         showQuestionsAnswered: true,
+        selectedButton: button.id,
       });
     } else if (this.state.showQuestionsAnswered) {
       console.log("showQuestionsAnswered");
@@ -97,7 +100,7 @@ class App extends React.Component<Props, any> {
           {
             this.state.showQuestionsAnswered &&
             <div ref={this.state.container}>
-            <QuestionCard question={question} answers={answers}></QuestionCard>
+            <QuestionCard question={question} answers={answers} buttonId={this.state.selectedButton}></QuestionCard>
             </div>
           }
         </div>  

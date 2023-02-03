@@ -20,5 +20,4 @@ export const Danger = Template.bind({});
 Danger.args = {
   children: "Danger",
   variant: "danger",
-  shape: "rounded",
 };
