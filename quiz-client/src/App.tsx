@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 
 import "./App.css";
 
 import Button from "./components/AnswerButton/AnswerButton";
 import QuestionCard from "./components/QuestionCard";
+import { string } from "prop-types";
 
 // element
 const element = <h1>Hello, world</h1>;
@@ -44,24 +45,37 @@ class App extends React.Component<Props, any> {
     this.state = {
       showStartGame: true,
       showQuestions: false,
+      showQuestionsAnswered: false,
+      gameId: string,
+      container: React.createRef(),
     };
   }
 
-  buttonHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
+   buttonHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
 
     const button: HTMLButtonElement = event.currentTarget;
 
-    if (startGame) {
+    if (this.state.showStartGame) {
       if (button.id === "0") {   
         this.setState({
           showStartGame: false,
           showQuestions: true,
+          showQuestionsAnswered: false,
+          gameId : "1234",
         });     
       } else {
         alert("join game");
       }
-    };
+    } else if (this.state.showQuestions) {
+      this.setState({
+        showStartGame: false,
+        showQuestions: false,
+        showQuestionsAnswered: true,
+      });
+    } else if (this.state.showQuestionsAnswered) {
+      console.log("showQuestionsAnswered");
+    }
   }
 
   render() {
@@ -70,40 +84,23 @@ class App extends React.Component<Props, any> {
         <div>
           {
             this.state.showStartGame &&   
+            <div>
             <QuestionCard question={startGame} answers={startGameAnswers} buttonHandler={this.buttonHandler}></QuestionCard>
+            </div>
           }
           {
             this.state.showQuestions &&
+            <div ref={this.state.container}>
             <QuestionCard question={question} answers={answers} buttonHandler={this.buttonHandler}></QuestionCard>
+            </div>
           }
-        </div>
-  
-        {/* <Welcome name='Kala'></Welcome>
-        <Clock/>
-        <form>
-          <button onClick={buttonHandler} className="button" name="button 1">
-            Button 1
-          </button>
-  
-          <Button onClick={buttonHandler} name='kissa' shape='rounded' children="kala" variant="danger"></Button>
-  
-          <button onClick={buttonHandler} className="button" name="button 2">
-            Button 2
-          </button>
-  
-          <button onClick={buttonHandler} className="button" name="button 3">
-            Button 3
-          </button>
-  
-          <button onClick={buttonHandler} className="button" name="button 4">
-            Button 4
-          </button>
-        </form>
-        <h1>
-          {clickedButton !== ""
-            ? `You have clicked "${clickedButton}"` 
-            : "No button clicked yet"}
-        </h1> */}
+          {
+            this.state.showQuestionsAnswered &&
+            <div ref={this.state.container}>
+            <QuestionCard question={question} answers={answers}></QuestionCard>
+            </div>
+          }
+        </div>  
       </div>
     );
   }

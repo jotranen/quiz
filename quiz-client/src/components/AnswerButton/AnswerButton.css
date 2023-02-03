@@ -23,3 +23,8 @@
   background-color: #04AA6D;
   color: white;
 }
+
+.select:focus {
+  background-color: yellow;
+  color: red;
+}

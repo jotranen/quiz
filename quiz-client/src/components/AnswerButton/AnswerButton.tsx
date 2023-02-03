@@ -8,7 +8,7 @@ export interface AnswerButtonProps extends React.HTMLAttributes<HTMLButtonElemen
   shape?: "rounded";
   name: string;
   key: string;
-  buttonhandler: (event: React.MouseEvent<HTMLButtonElement>) => void
+  buttonhandler?: (event: React.MouseEvent<HTMLButtonElement>) => void
 }
 
 export const AnswerButton: React.FC<AnswerButtonProps> = ({
