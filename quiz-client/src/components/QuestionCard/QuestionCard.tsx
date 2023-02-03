@@ -3,19 +3,23 @@ import AnswerButton from '../AnswerButton';
 import Question from '../Question';
 
 import './QuestionCard.css';
+import ProgressBar from '../ProgressBar';
 
 export interface QuestionCardProps extends React.HTMLAttributes<HTMLElement> {
     children?: React.ReactNode;
     question: string
     answers: string[]
     buttonId?: number,
+    progress?: number,
     buttonHandler?: (event: React.MouseEvent<HTMLButtonElement>) => void
+    progressDone?: () => void
 }
   
   export const QuestionCard: React.FC<QuestionCardProps> = ({
       children,
       buttonHandler,
       buttonId,
+      progressDone,
       ...props
     }) => {
     //   const classNames = `btn btn-${variant} btn-${shape}`;
@@ -24,14 +28,11 @@ export interface QuestionCardProps extends React.HTMLAttributes<HTMLElement> {
       if (buttonHandler) {
         buttons = props.answers.map((answer,index) => (
             <div className='qc_answers' key={index} {...props}>
-              <AnswerButton variant={'danger'} id={`${index}`} name={`${answer}`} buttonhandler={buttonHandler}></AnswerButton>
+              <AnswerButton variant={'danger'} id={`${index}`} 
+              name={`${answer}`} buttonhandler={buttonHandler}></AnswerButton>
             </div>
         ))
       } else {
-        console.log(buttonId)
-        console.log(1===buttonId)
-        console.log(typeof(1))
-        console.log(typeof(buttonId))
 
         buttons = props.answers.map((answer,index) => (
             <div className='qc_answers' key={index} {...props}>
@@ -40,12 +41,14 @@ export interface QuestionCardProps extends React.HTMLAttributes<HTMLElement> {
         ))
       }        
       return (
-        <div className={classNames} {...props}>
+        <><div className={classNames} {...props}>
           <div className='qc_question' key="kissa">
             <Question key="props.question" title={props.question}></Question>
           </div>
-            { buttons }
-        </div>
+          {buttons}
+        </div><div>
+            <ProgressBar progressDone={progressDone}></ProgressBar>
+          </div></>
       );
     };
   
