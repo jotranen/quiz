@@ -5,17 +5,29 @@ import { ProgressBar, ProgressBarProps } from './ProgressBar';
 export default {
     title: 'ProgressBar',
     component: ProgressBar,
-    argTypes: { onClick: { action: 'kala' } },
+    parameters: {
+        backgrounds: {
+            values: [
+                { name: 'red', value: '#f00' },
+                { name: 'green', value: '#0f0' },
+                { name: 'blue', value: '#00f' },
+            ],
+        },
+    },
+    argTypes: { progressDone: { action: 'ProgressBar done!' } }
 } as Meta;
 
 const Template: Story<ProgressBarProps> = (args) => <ProgressBar {...args} />;
 
-export const Percentage_10 = Template.bind({});
-Percentage_10.args = {
-    children: '10 percent',
+export const Default = Template.bind({});
+Default.args = {};
+
+export const Light = Template.bind({});
+Light.args = {
+    children: 'light',
 };
 
-export const Percentage_50 = Template.bind({});
-Percentage_50.args = {
-    children: '50 percent',
+export const Dark = Template.bind({});
+Dark.args = {
+    theme: 'dark',
 };

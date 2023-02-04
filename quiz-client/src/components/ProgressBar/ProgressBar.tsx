@@ -4,6 +4,7 @@ import './ProgressBar.css';
 export interface ProgressBarProps
     extends React.HTMLAttributes<HTMLButtonElement> {
     children?: React.ReactNode;
+    theme?: 'light' | 'dark';
     progressDone?: () => void;
 }
 
