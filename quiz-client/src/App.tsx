@@ -1,26 +1,29 @@
-import React, { useRef, useEffect, useState } from 'react'
+import React from 'react';
 
-import './App.css'
+import './App.css';
 
-import QuestionCard from './components/QuestionCard'
-import { string } from 'prop-types'
-import { UNSAFE_DataStaticRouterContext } from 'react-router-dom'
-import { updateConstructSignature } from 'typescript'
+import QuestionCard from './components/QuestionCard';
+import { string } from 'prop-types';
+import ProgressBar from './components/ProgressBar';
+import Game from './gameplay/game';
+import Player from './gameplay/player';
 
 interface Props {}
 
 const question =
-    'mita kello? fdafasdfadf asfasdfas hfsadhfkja sdhfkasdhfkashfkja hfhdahkfdsah'
-const answers = ['kello', 'kello2', 'kello3']
+    'mita kello? fdafasdfadf asfasdfas hfsadhfkja sdhfkasdhfkashfkja hfhdahkfdsah';
+const answers = ['kello', 'kello2', 'kello3'];
 
-const startGame = 'new game'
-const startGameAnswers = ['start', 'join']
+const startGame = 'new game';
+const startGameAnswers = ['start', 'join'];
 
 class App extends React.Component<Props, any> {
-    // const [clickedButton, setClickedButton] = useState('');
+    private _player = new Player(1, 'player1');
+
     constructor(props: Props) {
-        super(props)
+        super(props);
         this.state = {
+            showProgressBar: false,
             showStartGame: true,
             showQuestions: false,
             showQuestionsAnswered: false,
@@ -28,41 +31,45 @@ class App extends React.Component<Props, any> {
             container: React.createRef(),
             selectedButton: 0,
             progress: 20,
-        }
-    }   
-
-    progressDone = () => {
-        console.log('progress done')
+            game: Game,
+        };
     }
 
-    buttonHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
-        event.preventDefault()
+    progressDone = () => {
+        console.log('progress done');
+    };
 
-        const button: HTMLButtonElement = event.currentTarget
+    buttonHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
+        event.preventDefault();
+
+        const button: HTMLButtonElement = event.currentTarget;
 
         if (this.state.showStartGame) {
             if (button.id === '0') {
                 this.setState({
+                    showProgressBar: true,
                     showStartGame: false,
                     showQuestions: true,
                     showQuestionsAnswered: false,
                     gameId: '1234',
                     selectedButton: 0,
-                })
+                    game: new Game(1234, this._player),
+                });
             } else {
-                alert('join game')
+                alert('join game');
             }
         } else if (this.state.showQuestions) {
             this.setState({
+                showProgressBar: true,
                 showStartGame: false,
                 showQuestions: false,
                 showQuestionsAnswered: true,
                 selectedButton: button.id,
-            })
+            });
         } else if (this.state.showQuestionsAnswered) {
-            console.log('showQuestionsAnswered')
+            console.log('showQuestionsAnswered');
         }
-    }
+    };
 
     render() {
         return (
@@ -96,10 +103,17 @@ class App extends React.Component<Props, any> {
                             ></QuestionCard>
                         </div>
                     )}
+                    {this.state.showProgressBar && (
+                        <div>
+                            <ProgressBar
+                                progressDone={this.progressDone}
+                            ></ProgressBar>
+                        </div>
+                    )}
                 </div>
             </div>
-        )
+        );
     }
 }
 
-export default App
+export default App;
