@@ -32,6 +32,10 @@ class Questions {
     public nextQuestion() {
         return questions[this._currentQuestion++];
     }
+
+    public currentQuestion() {
+        return questions[this._currentQuestion];
+    }
 }
 
 export default Questions;

@@ -53,7 +53,7 @@ class App extends React.Component<Props, any> {
                     showQuestionsAnswered: false,
                     gameId: '1234',
                     selectedButton: 0,
-                    game: new Game(1234, this._player),
+                    game: new Game(1234, this._player, 2),
                 });
             } else {
                 alert('join game');
