@@ -10,10 +10,6 @@ import Player from './gameplay/player';
 
 interface Props {}
 
-const question =
-    'mita kello? fdafasdfadf asfasdfas hfsadhfkja sdhfkasdhfkashfkja hfhdahkfdsah';
-const answers = ['kello', 'kello2', 'kello3'];
-
 const startGame = 'new game';
 const startGameAnswers = ['start', 'join'];
 
@@ -30,13 +26,29 @@ class App extends React.Component<Props, any> {
             gameId: string,
             container: React.createRef(),
             selectedButton: 0,
-            progress: 20,
+            progress: 60,
             game: Game,
+            answer: 0,
         };
     }
 
     progressDone = () => {
-        console.log('progress done');
+        if (this.state.showQuestionsAnswered) {
+            console.log('progress done, answer: ' + this.state.answer);
+        } else {
+            console.log('progress done, no answer');
+        }
+        if (this.state.game.nextRound()) {
+            this.setState({
+                showProgressBar: true,
+                showStartGame: false,
+                showQuestions: true,
+                showQuestionsAnswered: false,
+                progress: 60,
+            });
+        } else {
+            console.log('game over');
+        }
     };
 
     buttonHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -65,6 +77,7 @@ class App extends React.Component<Props, any> {
                 showQuestions: false,
                 showQuestionsAnswered: true,
                 selectedButton: button.id,
+                answer: button.id,
             });
         } else if (this.state.showQuestionsAnswered) {
             console.log('showQuestionsAnswered');
@@ -88,8 +101,8 @@ class App extends React.Component<Props, any> {
                     {this.state.showQuestions && (
                         <div ref={this.state.container}>
                             <QuestionCard
-                                question={question}
-                                answers={answers}
+                                question={this.state.game.question().question}
+                                answers={this.state.game.question().answers}
                                 buttonHandler={this.buttonHandler}
                             ></QuestionCard>
                         </div>
@@ -97,8 +110,8 @@ class App extends React.Component<Props, any> {
                     {this.state.showQuestionsAnswered && (
                         <div ref={this.state.container}>
                             <QuestionCard
-                                question={question}
-                                answers={answers}
+                                question={this.state.game.question().question}
+                                answers={this.state.game.question().answers}
                                 buttonId={this.state.selectedButton}
                             ></QuestionCard>
                         </div>
@@ -106,6 +119,8 @@ class App extends React.Component<Props, any> {
                     {this.state.showProgressBar && (
                         <div>
                             <ProgressBar
+                                key={this.state.game.question().question}
+                                speed={50}
                                 progressDone={this.progressDone}
                             ></ProgressBar>
                         </div>

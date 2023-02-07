@@ -6,16 +6,18 @@ export interface ProgressBarProps
     children?: React.ReactNode;
     theme?: 'light' | 'dark';
     progressDone?: () => void;
+    speed?: number;
 }
 
 export const ProgressBar: React.FC<ProgressBarProps> = ({
     children,
     progressDone,
+    speed = 100,
     ...props
 }) => {
     return (
         <div className="progress-bar">
-            <Filler progressDone={progressDone} />
+            <Filler progressDone={progressDone} speed={speed} />
         </div>
     );
 };
@@ -23,11 +25,13 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
 interface FillerProps extends React.HTMLAttributes<HTMLButtonElement> {
     children?: React.ReactNode;
     progressDone?: () => void;
+    speed?: number;
 }
 
 export const Filler: React.FC<FillerProps> = ({
     children,
     progressDone,
+    speed = 100,
     ...props
 }) => {
     const [count, setCount] = useState(15);
@@ -38,7 +42,7 @@ export const Filler: React.FC<FillerProps> = ({
         const updateCount = () => {
             timer = setInterval(() => {
                 setCount((prevCount) => prevCount + 1);
-            }, 100);
+            }, speed);
 
             if (count === 100) {
                 clearInterval(timer);
